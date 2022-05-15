@@ -27,6 +27,7 @@ import javafx.stage.Stage;
 import model.Navegacion;
 import model.User;
 import state.UserState;
+import utils.NotifUtils;
 
 /**
  * FXML Controller class
@@ -55,11 +56,11 @@ public class RegisterController implements Initializable {
     private Text passwordConfirmError;
     @FXML
     private Text dobError;
+    @FXML
+    private ImageView avatarImage;
     
     private Stage stage;
     private Navegacion nav;
-    @FXML
-    private ImageView avatarImage;
     
     public void setStage( Stage stage ) {
         this.stage = stage;
@@ -78,10 +79,7 @@ public class RegisterController implements Initializable {
             nav = Navegacion.getSingletonNavegacion();
         }
         catch ( NavegacionDAOException e ) {
-            Alert alert = new Alert( AlertType.ERROR );
-            alert.setTitle("Database error");
-            alert.setContentText("There has been an error with the database. Verify your installation and try again.");
-            alert.showAndWait();
+            NotifUtils.showError( "Database error", "There has been an error with the database. Verify your installation and try again." );
             
             stage.close();
             return;
