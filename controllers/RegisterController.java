@@ -1,6 +1,8 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt 
+ * to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to 
+ * edit this template
  */
 package controllers;
 
@@ -27,7 +29,6 @@ import javafx.stage.Stage;
 import model.Navegacion;
 import model.User;
 import state.UserState;
-import utils.NotifUtils;
 
 /**
  * FXML Controller class
@@ -56,11 +57,11 @@ public class RegisterController implements Initializable {
     private Text passwordConfirmError;
     @FXML
     private Text dobError;
-    @FXML
-    private ImageView avatarImage;
     
     private Stage stage;
     private Navegacion nav;
+    @FXML
+    private ImageView avatarImage;
     
     public void setStage( Stage stage ) {
         this.stage = stage;
@@ -79,7 +80,10 @@ public class RegisterController implements Initializable {
             nav = Navegacion.getSingletonNavegacion();
         }
         catch ( NavegacionDAOException e ) {
-            NotifUtils.showError( "Database error", "There has been an error with the database. Verify your installation and try again." );
+            Alert alert = new Alert( AlertType.ERROR );
+            alert.setTitle("Database error");
+            alert.setContentText("There has been an error with the database. Verify your installation and try again.");
+            alert.showAndWait();
             
             stage.close();
             return;

@@ -32,7 +32,24 @@ public class WelcomeScreenController implements Initializable {
 
     @FXML
     private void onLoginSelected(ActionEvent event) {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("../views/Login.fxml"));
         
+        try {
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            
+            // Send a reference of the stage to the controller
+            fxmlLoader.<LoginController>getController().setStage( stage );
+            
+            stage.setTitle( "Login" );
+            stage.setScene( scene );
+            stage.initModality( Modality.APPLICATION_MODAL );
+            stage.showAndWait();
+        }
+        catch ( IOException e ) {
+            System.out.println(e.toString());
+        }
     }
 
     @FXML
