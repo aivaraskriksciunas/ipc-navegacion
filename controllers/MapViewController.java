@@ -262,7 +262,7 @@ public class MapViewController implements Initializable {
             }
         });
     }    
-
+    
     @FXML
     private void onZoom( ScrollEvent event ) {
         zoom( event.getDeltaY() ); 

@@ -49,6 +49,8 @@ public class NavigationIPC extends Application {
         @Override
         public void changed(ObservableValue<? extends User> ov, User old, User current) {
             
+            System.out.println( "User changed" );
+            
             User model = ov.getValue();
             if ( model == null ) {
                 stage.setScene( welcomeScene );

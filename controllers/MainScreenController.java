@@ -26,9 +26,9 @@ public class MainScreenController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        // TODO
     }    
-
+    
     @FXML
     private void onTestMap(ActionEvent event) {
         FXMLLoader fxmlLoader = new FXMLLoader();
@@ -42,7 +42,7 @@ public class MainScreenController implements Initializable {
             stage.setTitle( "Map Tools" );
             stage.setScene( scene );
             stage.show();
-        }
+}
         catch ( IOException e ) {
             System.out.println( e.toString() );
         }
