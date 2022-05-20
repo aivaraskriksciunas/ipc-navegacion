@@ -12,3 +12,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-stroke: yellow;
     -fx-stroke-width: 2;
 }
+
+.selected-line {
+    -fx-effect: dropshadow( gaussian, yellow, 8, 0, 0, 0 );
+}

@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
@@ -14,6 +15,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="647.0" stylesheets="@map-styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MapViewController">
    <children>
@@ -32,7 +34,16 @@
                         <Insets right="8.0" />
                      </HBox.margin>
                   </ToggleButton>
-                  <ToggleButton fx:id="lineUtilsBtn" mnemonicParsing="false" text="Line" toggleGroup="$utilSelection" />
+                  <ToggleButton fx:id="lineUtilsBtn" mnemonicParsing="false" text="Line" toggleGroup="$utilSelection">
+                     <HBox.margin>
+                        <Insets right="8.0" />
+                     </HBox.margin></ToggleButton>
+                  <ToggleButton fx:id="arcUtilsBtn" mnemonicParsing="false" text="Arc" toggleGroup="$utilSelection">
+                     <HBox.margin>
+                        <Insets right="8.0" />
+                     </HBox.margin>
+                  </ToggleButton>
+                  <ToggleButton fx:id="textUtilsBtn" mnemonicParsing="false" text="Text" toggleGroup="$utilSelection" />
                   <HBox alignment="CENTER_RIGHT" fillHeight="false" prefHeight="27.0" prefWidth="168.0" HBox.hgrow="ALWAYS">
                      <children>
                         <Label text="Zoom:">
@@ -96,6 +107,77 @@
                   <Slider fx:id="lineWidthControl" max="6.0" min="1.0" showTickLabels="true" />
                </children>
             </HBox>
+            <HBox fx:id="arcOptions" alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="607.0">
+               <children>
+                  <Label text="Arc color:">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ColorPicker fx:id="arcColorControl" prefHeight="43.0" prefWidth="138.0">
+                     <value>
+                        <Color />
+                     </value>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </ColorPicker>
+                  <Label text="Width: ">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Slider fx:id="arcWidthControl" max="6.0" min="1.0" showTickLabels="true" />
+               </children>
+            </HBox>
+            <VBox fx:id="textOptions">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="607.0">
+                     <children>
+                        <Label text="Text color:">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <ColorPicker fx:id="textColorControl" prefHeight="43.0" prefWidth="138.0">
+                           <value>
+                              <Color />
+                           </value>
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </ColorPicker>
+                        <Label text="Size:">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Slider fx:id="textSizeControl" blockIncrement="5.0" majorTickUnit="12.0" max="40.0" min="6.0" showTickLabels="true">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </Slider>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Label">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="textValueControl" prefHeight="26.0" prefWidth="220.0">
+                           <HBox.margin>
+                              <Insets right="8.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
             <HBox fx:id="editPointOptions" alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="607.0">
                <children>
                   <Label text="Point color:">
@@ -119,7 +201,7 @@
                   <Slider fx:id="editPointSizeControl" max="20.0" min="5.0" showTickLabels="true" />
                   <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <Button fx:id="removePoint" mnemonicParsing="false" text="Remove" />
+                        <Button mnemonicParsing="false" onAction="#onRemoveNode" text="Remove" />
                      </children>
                   </HBox>
                </children>
@@ -147,11 +229,92 @@
                   <Slider fx:id="editLineWidthControl" max="6.0" min="1.0" showTickLabels="true" />
                   <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <Button fx:id="removeLine" mnemonicParsing="false" text="Remove" />
+                        <Button mnemonicParsing="false" onAction="#onRemoveNode" text="Remove" />
                      </children>
                   </HBox>
                </children>
             </HBox>
+            <HBox fx:id="editArcOptions" alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="607.0">
+               <children>
+                  <Label text="Arc color:">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ColorPicker fx:id="editArcColorControl" prefHeight="43.0" prefWidth="138.0">
+                     <value>
+                        <Color />
+                     </value>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </ColorPicker>
+                  <Label text="Width: ">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Slider fx:id="editArcWidthControl" max="6.0" min="1.0" showTickLabels="true" />
+                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#onRemoveNode" text="Remove" />
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <VBox fx:id="editTextOptions">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="607.0">
+                     <children>
+                        <Label text="Text color:">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <ColorPicker fx:id="editTextColorControl" prefHeight="43.0" prefWidth="138.0">
+                           <value>
+                              <Color />
+                           </value>
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </ColorPicker>
+                        <Label text="Size:">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Slider fx:id="editTextSizeControl" majorTickUnit="12.0" max="40.0" min="6.0" showTickLabels="true">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </Slider>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#onRemoveNode" text="Remove" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Label">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="editTextValueControl" prefHeight="26.0" prefWidth="220.0">
+                           <HBox.margin>
+                              <Insets right="8.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
             <ScrollPane fx:id="mapView" hbarPolicy="NEVER" onScroll="#onZoom" pannable="true" prefHeight="395.0" prefWidth="607.0" vbarPolicy="NEVER">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0">
@@ -161,6 +324,7 @@
                               <Image url="@../../resources/carta_nautica.jpg" />
                            </image>
                         </ImageView>
+                        <Text layoutX="156.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
                      </children>
                   </AnchorPane>
               </content>
