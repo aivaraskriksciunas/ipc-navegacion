@@ -41,7 +41,7 @@ public class LoginController implements Initializable {
     private Label unknownLabel;
     
     private Navegacion nav;
-    
+  
     public void setStage( Stage stage ) {
         this.stage = stage;
     }
@@ -93,5 +93,4 @@ public class LoginController implements Initializable {
         stage.close();
         
     }
-
 }

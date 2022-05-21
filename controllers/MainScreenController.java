@@ -41,7 +41,6 @@ public class MainScreenController implements Initializable {
             });
         
     }    
-    
     private void onTestMap(ActionEvent event) {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation( getClass().getResource("../views/MapView.fxml") );
