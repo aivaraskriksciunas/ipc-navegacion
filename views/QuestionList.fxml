@@ -13,7 +13,11 @@
    <children>
       <VBox prefHeight="400.0" prefWidth="600.0">
          <children>
-            <Label text="Available questions: (double click to select)" />
+            <Label text="Available questions:">
+               <VBox.margin>
+                  <Insets bottom="8.0" />
+               </VBox.margin>
+            </Label>
             <VBox prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
                <children>
                   <ListView fx:id="questionList" prefHeight="331.0" prefWidth="539.0" />
@@ -21,7 +25,7 @@
             </VBox>
             <HBox alignment="BOTTOM_RIGHT" prefHeight="30.0" prefWidth="539.0">
                <children>
-                  <Button fx:id="selectQuestion" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#onSelectQuestion" text="Select question" />
+                  <Button fx:id="selectQuestion" alignment="CENTER" mnemonicParsing="false" onAction="#onSelectQuestion" prefHeight="26.0" prefWidth="546.0" text="Select question" textAlignment="CENTER" />
                </children>
                <VBox.margin>
                   <Insets top="8.0" />

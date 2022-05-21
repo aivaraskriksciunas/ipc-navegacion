@@ -11,3 +11,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-padding: 8 8 8 8;
     
 }
+
+.correct-choice {
+    -fx-text-fill: green;
+    -fx-font-weight: bold;
+}
+
+.wrong-choice {
+    -fx-text-fill: red;
+    -fx-font-weight: bold;
+}

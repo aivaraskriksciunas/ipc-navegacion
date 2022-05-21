@@ -9,6 +9,7 @@ import controllers.QuestionViewController;
 import java.io.IOException;
 import java.util.List;
 import java.util.Random;
+import javafx.beans.property.ReadOnlyBooleanProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
@@ -23,6 +24,7 @@ import model.Problem;
 public class QuestionViewManager {
     
     private Stage window;
+    private Stage mapWindow;
     
     private Scene questionViewScene;
     private Scene questionListScene;
@@ -35,6 +37,21 @@ public class QuestionViewManager {
     private List<Problem> problems;
     
     public QuestionViewManager() {
+        // Load map
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation( getClass().getResource("../views/MapView.fxml") );
+        
+        try {
+            Scene scene = new Scene( fxmlLoader.load() );
+            mapWindow = new Stage();
+            
+            mapWindow.setTitle( "Map Tools" );
+            mapWindow.setScene( scene );
+        }
+        catch ( IOException e ) {
+            System.out.println( e.toString() );
+        }
+        
         FXMLLoader questionListView = new FXMLLoader( getClass().getResource( "../views/QuestionList.fxml" ));
         FXMLLoader questionView = new FXMLLoader( getClass().getResource( "../views/QuestionView.fxml" ));
         
@@ -50,6 +67,7 @@ public class QuestionViewManager {
         questionViewController = questionView.getController();
         
         questionListController.setManager( this );
+        questionViewController.setManager( this );
         
         try {
             nav = Navegacion.getSingletonNavegacion();
@@ -89,5 +107,17 @@ public class QuestionViewManager {
             window.showAndWait();
         }
         
+    }
+    
+    public void showMap() {
+        mapWindow.show();   
+    }
+    
+    public void closeMap() {
+        mapWindow.close();
+    }
+    
+    public ReadOnlyBooleanProperty mapShowingProperty() {
+        return mapWindow.showingProperty();
     }
 }

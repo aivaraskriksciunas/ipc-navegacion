@@ -46,25 +46,7 @@ public class MainScreenController implements Initializable {
         });
         
     }    
-    private void onTestMap(ActionEvent event) {
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation( getClass().getResource("../views/MapView.fxml") );
-        System.out.println( "opening map" );
-        
-        try {
-            Scene scene = new Scene( fxmlLoader.load() );
-            Stage stage = new Stage();
-            
-            stage.setTitle( "Map Tools" );
-            stage.setScene( scene );
-            stage.show();
-        }
-        catch ( IOException e ) {
-            System.out.println( e.toString() );
-        }
-    }
 
-    @FXML
     private void onOpenRandomQuestion(ActionEvent event) {
         questionViewManager.chooseRandomQuestion();
     }
