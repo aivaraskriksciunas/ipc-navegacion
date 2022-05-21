@@ -72,7 +72,7 @@ public class QuestionViewController implements Initializable {
         this.manager = manager;
         
         manager.mapShowingProperty().addListener( ( o, ov, nv ) -> {
-            if ( nv ) {
+            if ( !nv ) {
                 openMapButton.setText( "Open map" );
             }
             else {

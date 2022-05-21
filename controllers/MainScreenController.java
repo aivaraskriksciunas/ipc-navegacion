@@ -51,15 +51,6 @@ public class MainScreenController implements Initializable {
         
     }    
 
-    private void onOpenRandomQuestion(ActionEvent event) {
-        questionViewManager.chooseRandomQuestion();
-    }
-
-    @FXML
-    private void showQuestionList(ActionEvent event) {
-        questionViewManager.showQuestionList();
-    }
-
     @FXML
     private void editProfile(ActionEvent event) {
     }
@@ -79,14 +70,17 @@ public class MainScreenController implements Initializable {
 
     @FXML
     private void rdnPrbBtn(ActionEvent event) {
+        questionViewManager.chooseRandomQuestion();
     }
 
     @FXML
     private void allPrbBtn(ActionEvent event) {
+        questionViewManager.showQuestionList();
     }
 
     @FXML
     private void previewMapBtn(ActionEvent event) {
+        questionViewManager.showMap();
     }
     
 }
