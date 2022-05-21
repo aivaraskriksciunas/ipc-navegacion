@@ -27,7 +27,6 @@ public class UserState {
     // Implementation
     // 
     public ObjectProperty<User> user;
-    private SessionManager session;
     
     // Prevent other classes from instantiating an object
     private UserState() {
@@ -36,14 +35,6 @@ public class UserState {
     
     public void setUser( User user ) {
         this.user.set( user );
-        
-        if ( user != null ) {
-            session = new SessionManager( user );
-        }
-        else if ( session != null ) {
-            session.saveSession();
-            session = null;
-        }
     }
     
     public User getUser() {
@@ -51,15 +42,11 @@ public class UserState {
     }
     
     public void logout() {
-        this.setUser( null );
+        user.setValue( null );
     }
     
     public void addUserListener( ChangeListener<? super User> listener ) {
         user.addListener( listener );
-    }
-    
-    public SessionManager getSession() {
-        return session;
     }
     
 }

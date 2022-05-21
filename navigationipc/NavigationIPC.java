@@ -1,6 +1,5 @@
 package navigationipc;
 
-import controllers.MainScreenController;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -10,7 +9,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.User;
 import state.UserState;
-import utils.QuestionViewManager;
 
 /**
  *
@@ -50,6 +48,8 @@ public class NavigationIPC extends Application {
 
         @Override
         public void changed(ObservableValue<? extends User> ov, User old, User current) {
+            
+            System.out.println( "User changed" );
             
             User model = ov.getValue();
             if ( model == null ) {

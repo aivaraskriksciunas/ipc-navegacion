@@ -13,9 +13,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import utils.QuestionViewManager;
 import state.UserState;
 
 /**
@@ -24,26 +25,24 @@ import state.UserState;
  * @author Aivaras Kriksciunas
  */
 public class MainScreenController implements Initializable {
-    private QuestionViewManager questionViewManager;
 
     @FXML
     private Label userName;
     @FXML
     private ImageView userAvatar;
+    @FXML
+    private MenuItem previewMap;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-    
-        questionViewManager = new QuestionViewManager();
-        
-        UserState.getState().addUserListener((o, oldValue, newValue) -> {
-            if (newValue == null) return;
-            userName.setText(newValue.getNickName());
-            userAvatar.setImage(UserState.getState().getUser().getAvatar());
-        });
+            UserState.getState().addUserListener((o, oldValue, newValue) -> {
+                if (newValue == null) return;
+                userName.setText(newValue.getNickName());
+                userAvatar.setImage(UserState.getState().getUser().getAvatar());
+            });
         
     }    
     private void onTestMap(ActionEvent event) {
@@ -58,20 +57,39 @@ public class MainScreenController implements Initializable {
             stage.setTitle( "Map Tools" );
             stage.setScene( scene );
             stage.show();
-        }
+}
         catch ( IOException e ) {
             System.out.println( e.toString() );
         }
     }
 
     @FXML
-    private void onOpenRandomQuestion(ActionEvent event) {
-        questionViewManager.chooseRandomQuestion();
+    private void editProfile(ActionEvent event) {
     }
 
     @FXML
-    private void showQuestionList(ActionEvent event) {
-        questionViewManager.showQuestionList();
+    private void logUserOut(ActionEvent event) {
+        UserState.getState().logout();
+    }
+
+    @FXML
+    private void displayAbout(ActionEvent event) {
+    }
+
+    @FXML
+    private void editProfile(MouseEvent event) {
+    }
+
+    @FXML
+    private void rdnPrbBtn(ActionEvent event) {
+    }
+
+    @FXML
+    private void allPrbBtn(ActionEvent event) {
+    }
+
+    @FXML
+    private void previewMapBtn(ActionEvent event) {
     }
     
 }
