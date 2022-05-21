@@ -1,0 +1,23 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 20 may 2022, 21:06:19
+    Author     : Aivaras Kriksciunas
+*/
+
+.question-choice {
+    -fx-padding: 8 8 8 8;
+    
+}
+
+.correct-choice {
+    -fx-text-fill: green;
+    -fx-font-weight: bold;
+}
+
+.wrong-choice {
+    -fx-text-fill: red;
+    -fx-font-weight: bold;
+}

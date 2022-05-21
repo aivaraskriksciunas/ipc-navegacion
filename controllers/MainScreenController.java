@@ -17,6 +17,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import utils.QuestionViewManager;
 import state.UserState;
 
 /**
@@ -25,6 +26,7 @@ import state.UserState;
  * @author Aivaras Kriksciunas
  */
 public class MainScreenController implements Initializable {
+    private QuestionViewManager questionViewManager;
 
     @FXML
     private Label userName;
@@ -38,29 +40,24 @@ public class MainScreenController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-            UserState.getState().addUserListener((o, oldValue, newValue) -> {
-                if (newValue == null) return;
-                userName.setText(newValue.getNickName());
-                userAvatar.setImage(UserState.getState().getUser().getAvatar());
-            });
+    
+        questionViewManager = new QuestionViewManager();
+        
+        UserState.getState().addUserListener((o, oldValue, newValue) -> {
+            if (newValue == null) return;
+            userName.setText(newValue.getNickName());
+            userAvatar.setImage(UserState.getState().getUser().getAvatar());
+        });
         
     }    
-    private void onTestMap(ActionEvent event) {
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation( getClass().getResource("../views/MapView.fxml") );
-        System.out.println( "opening map" );
-        
-        try {
-            Scene scene = new Scene( fxmlLoader.load() );
-            Stage stage = new Stage();
-            
-            stage.setTitle( "Map Tools" );
-            stage.setScene( scene );
-            stage.show();
-}
-        catch ( IOException e ) {
-            System.out.println( e.toString() );
-        }
+
+    private void onOpenRandomQuestion(ActionEvent event) {
+        questionViewManager.chooseRandomQuestion();
+    }
+
+    @FXML
+    private void showQuestionList(ActionEvent event) {
+        questionViewManager.showQuestionList();
     }
 
     @FXML
