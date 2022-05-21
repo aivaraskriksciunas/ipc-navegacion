@@ -5,15 +5,21 @@
  */
 package controllers;
 
+import DBAccess.NavegacionDAOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import model.Navegacion;
 import model.User;
 import state.UserState;
 
@@ -34,6 +40,8 @@ public class LoginController implements Initializable {
     @FXML
     private Label unknownLabel;
     
+    private Navegacion nav;
+  
     public void setStage( Stage stage ) {
         this.stage = stage;
     }
@@ -43,7 +51,17 @@ public class LoginController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        try {
+            nav = Navegacion.getSingletonNavegacion();
+        } catch (NavegacionDAOException e) {
+            Alert alert = new Alert( AlertType.ERROR );
+            alert.setTitle("Login error");
+            alert.setContentText("There has been an error with the database. Verify your installation and try again.");
+            alert.showAndWait();
+            
+            stage.close();
+            return;
+        }
         loginButton.disableProperty().bind(txtUsername.textProperty().isEmpty().or(txtPassword.textProperty().isEmpty()));
     }    
 
@@ -54,18 +72,25 @@ public class LoginController implements Initializable {
 
     @FXML
     private void logUserIn(ActionEvent event) {
-        User user = null;
+        User user;
         
-        if (!user.checkCredentials(txtUsername.textProperty().getValue(), txtPassword.textProperty().getValue())) {
-            displayUnknownUser();
-            txtUsername.textProperty().setValue("");
-            txtPassword.textProperty().setValue("");
-        } else {
+        if (!nav.exitsNickName(txtUsername.getText())) {
+            unknownLabel.visibleProperty().set(true);
+
+            return;
         }
+        
+        user = nav.loginUser(txtUsername.getText(), txtPassword.getText());
+        
+        if (user == null) {
+            unknownLabel.setText("Username or password is incorrect");
+            unknownLabel.visibleProperty().set(true);
+            return;
+        }
+        
+        UserState.getState().setUser(user);
+        
+        stage.close();
+        
     }
-    
-    private void displayUnknownUser() {
-        unknownLabel.visibleProperty().set(true);
-    }
-    
 }
