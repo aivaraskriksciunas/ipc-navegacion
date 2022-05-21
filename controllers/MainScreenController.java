@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import utils.QuestionViewManager;
 
 /**
  * FXML Controller class
@@ -20,13 +21,16 @@ import javafx.stage.Stage;
  * @author Aivaras Kriksciunas
  */
 public class MainScreenController implements Initializable {
-
+    
+    private QuestionViewManager questionViewManager;
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        questionViewManager = new QuestionViewManager();
+        
     }    
     
     @FXML
@@ -42,10 +46,20 @@ public class MainScreenController implements Initializable {
             stage.setTitle( "Map Tools" );
             stage.setScene( scene );
             stage.show();
-}
+        }
         catch ( IOException e ) {
             System.out.println( e.toString() );
         }
+    }
+
+    @FXML
+    private void onOpenRandomQuestion(ActionEvent event) {
+        questionViewManager.chooseRandomQuestion();
+    }
+
+    @FXML
+    private void showQuestionList(ActionEvent event) {
+        questionViewManager.showQuestionList();
     }
     
 }
