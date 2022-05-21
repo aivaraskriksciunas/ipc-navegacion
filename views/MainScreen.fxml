@@ -9,39 +9,58 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainScreenController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="mainBG" stylesheets="@mainScreen.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainScreenController">
    <children>
       <MenuBar>
         <menus>
           <Menu mnemonicParsing="false" text="_Proflie">
             <items>
-              <MenuItem mnemonicParsing="false" text="Edit profile" />
+              <MenuItem mnemonicParsing="false" onAction="#editProfile" text="Edit profile" />
+                  <MenuItem mnemonicParsing="false" onAction="#logUserOut" text="Logout" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="_Map">
             <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
+              <MenuItem fx:id="previewMap" mnemonicParsing="false" text="Preview Map" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="About">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem mnemonicParsing="false" onAction="#displayAbout" text="About" />
             </items>
           </Menu>
         </menus>
       </MenuBar>
-      <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+      <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="200.0" spacing="20.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#showQuestionList" text="Button" />
-            <Label fx:id="userName" text="userName" />
-            <ImageView fx:id="userAvatar" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-               <HBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </HBox.margin>
-            </ImageView>
+            <HBox alignment="CENTER" onMouseClicked="#editProfile" prefHeight="10.0" spacing="10.0" styleClass="userArea" stylesheets="@mainScreen.css">
+               <children>
+                  <Label fx:id="userName" onMouseClicked="#editProfile" styleClass="textDark" stylesheets="@mainScreen.css" text="userName">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+                  <ImageView fx:id="userAvatar" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#editProfile" pickOnBounds="true" preserveRatio="true" />
+               </children>
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+            </HBox>
          </children>
+         <padding>
+            <Insets right="10.0" top="10.0" />
+         </padding>
       </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0" />
+      <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#rdnPrbBtn" prefWidth="150.0" styleClass="btnLight" stylesheets="@mainScreen.css" text="Random Problem" />
+            <Button mnemonicParsing="false" onAction="#allPrbBtn" prefWidth="150.0" styleClass="btnLight" stylesheets="@mainScreen.css" text="All Problems" />
+            <Button mnemonicParsing="false" onAction="#previewMapBtn" prefWidth="150.0" styleClass="btnLight" stylesheets="@mainScreen.css" text="Preview Map" />
+         </children></HBox>
    </children>
 </VBox>

@@ -6,8 +6,8 @@
     -fx-background-color: #212529;
     -fx-border-radius: 2em;
     -fx-background-radius: 2em;
-    -fx-border-width: 0.2em;
-    -fx-border-color: white;
+    /*-fx-border-width: 0.2em;*/
+    /*-fx-border-color: white;*/
     -fx-padding: 2em;
     -fx-border-insets: 2em;
     -fx-background-insets: 2em;
@@ -22,12 +22,15 @@
     /*-fx-font-size: 2em;*/
 }
 
+.textDark {
+    -fx-text-fill: #212529;
+}
+
 .titleTextLight {
     -fx-text-fill: #f8f9fa;
     /*-fx-font-size: 1.5em;*/
     -fx-font-weight: bold;
 }
-
 
 .btnLight {
     -fx-background-color: #FFEEFF;
@@ -35,5 +38,6 @@
 }
 
 .acceptBtnTxt {
-    -fx-text-fill: #2d8d16;
+    -fx-background-color: #1E88E5;
+    -fx-background-radius: 1em;
 }

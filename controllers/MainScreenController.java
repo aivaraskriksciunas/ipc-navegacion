@@ -13,7 +13,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import utils.QuestionViewManager;
 import state.UserState;
@@ -30,6 +32,8 @@ public class MainScreenController implements Initializable {
     private Label userName;
     @FXML
     private ImageView userAvatar;
+    @FXML
+    private MenuItem previewMap;
 
     /**
      * Initializes the controller class.
@@ -54,6 +58,35 @@ public class MainScreenController implements Initializable {
     @FXML
     private void showQuestionList(ActionEvent event) {
         questionViewManager.showQuestionList();
+    }
+
+    @FXML
+    private void editProfile(ActionEvent event) {
+    }
+
+    @FXML
+    private void logUserOut(ActionEvent event) {
+        UserState.getState().logout();
+    }
+
+    @FXML
+    private void displayAbout(ActionEvent event) {
+    }
+
+    @FXML
+    private void editProfile(MouseEvent event) {
+    }
+
+    @FXML
+    private void rdnPrbBtn(ActionEvent event) {
+    }
+
+    @FXML
+    private void allPrbBtn(ActionEvent event) {
+    }
+
+    @FXML
+    private void previewMapBtn(ActionEvent event) {
     }
     
 }
