@@ -12,8 +12,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import utils.QuestionViewManager;
+import state.UserState;
 
 /**
  * FXML Controller class
@@ -21,19 +24,28 @@ import utils.QuestionViewManager;
  * @author Aivaras Kriksciunas
  */
 public class MainScreenController implements Initializable {
-    
     private QuestionViewManager questionViewManager;
-    
+
+    @FXML
+    private Label userName;
+    @FXML
+    private ImageView userAvatar;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+    
         questionViewManager = new QuestionViewManager();
         
+        UserState.getState().addUserListener((o, oldValue, newValue) -> {
+            if (newValue == null) return;
+            userName.setText(newValue.getNickName());
+            userAvatar.setImage(UserState.getState().getUser().getAvatar());
+        });
+        
     }    
-    
-    @FXML
     private void onTestMap(ActionEvent event) {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation( getClass().getResource("../views/MapView.fxml") );
