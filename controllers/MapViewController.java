@@ -5,7 +5,11 @@
 package controllers;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
@@ -147,13 +151,22 @@ public class MapViewController implements Initializable {
     private ArrayList<Node> mapElements;
     private Group mapGroup;
 
+    private double scale = 1;
+    
+    private ObjectProperty<MapAction> currentAction;
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        graphics = canvas.getGraphicsContext2D();
+        try {
+            mapImage.setImage( new Image( "carta_nautica.jpg" ) );
+        }
+        catch ( Exception e ) {
+            NotifUtils.showError( "Resource not found", "The required resources for the map are missing. Verify the installation and try again." );
+        }
         
         mapElements = new ArrayList<>();
         
@@ -249,6 +262,11 @@ public class MapViewController implements Initializable {
             }
         });
     }    
+    
+    @FXML
+    private void onZoom( ScrollEvent event ) {
+        zoom( event.getDeltaY() ); 
+    }
     
     @FXML
     private void onZoomOut(ActionEvent event) {

@@ -57,11 +57,11 @@ public class RegisterController implements Initializable {
     private Text passwordConfirmError;
     @FXML
     private Text dobError;
+    @FXML
+    private ImageView avatarImage;
     
     private Stage stage;
     private Navegacion nav;
-    @FXML
-    private ImageView avatarImage;
     
     public void setStage( Stage stage ) {
         this.stage = stage;
