@@ -12,7 +12,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import state.UserState;
 
 /**
  * FXML Controller class
@@ -21,15 +24,24 @@ import javafx.stage.Stage;
  */
 public class MainScreenController implements Initializable {
 
+    @FXML
+    private Label userName;
+    @FXML
+    private ImageView userAvatar;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+            UserState.getState().addUserListener((o, oldValue, newValue) -> {
+                if (newValue == null) return;
+                userName.setText(newValue.getNickName());
+                userAvatar.setImage(UserState.getState().getUser().getAvatar());
+            });
         
     }    
     
-    @FXML
     private void onTestMap(ActionEvent event) {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation( getClass().getResource("../views/MapView.fxml") );
