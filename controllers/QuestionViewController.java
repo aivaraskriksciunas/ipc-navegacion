@@ -10,6 +10,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.beans.binding.BooleanBinding;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -18,6 +19,10 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.text.Text;
 import model.Answer;
 import model.Problem;
+import model.User;
+import state.SessionManager;
+import state.UserState;
+import utils.QuestionViewManager;
 
 /**
  * FXML Controller class
@@ -45,35 +50,109 @@ public class QuestionViewController implements Initializable {
     private ToggleGroup choiceGroup;
     @FXML
     private Button submitButton;
+    @FXML
+    private Button continueButton;
     
+    private QuestionViewManager manager;
     
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
         submitButton.disableProperty().bind( 
                 choice1.selectedProperty().or( choice2.selectedProperty() )
                         .or( choice3.selectedProperty() )
                         .or( choice4.selectedProperty() ) 
                 .not()
         );
+    }  
+    
+    public void setManager( QuestionViewManager manager ) {
+        this.manager = manager;
         
-    }    
+        manager.mapShowingProperty().addListener( ( o, ov, nv ) -> {
+            if ( nv ) {
+                openMapButton.setText( "Open map" );
+            }
+            else {
+                openMapButton.setText( "Close map" );
+            }
+        });
+    }
     
     public void setProblem( Problem p ) {
         problem = p;
         
         questionText.setText( p.getText() );
         
-        answers = new ArrayList<Answer>( p.getAnswers() );
+        answers = new ArrayList<>( p.getAnswers() );
         Collections.shuffle( answers );
         
-        choice1.setText( answers.get( 0 ).getText() );
-        choice2.setText( answers.get( 1 ).getText() );
-        choice3.setText( answers.get( 2 ).getText() );
-        choice4.setText( answers.get( 3 ).getText() );
+        for ( int i = 0; i < 4; i++ ) {
+            RadioButton btn = (RadioButton)choiceGroup.getToggles().get( i );
+            
+            btn.setText( answers.get( i ).getText() );
+            btn.getStyleClass().remove( "correct-choice" );
+            btn.getStyleClass().remove( "wrong-choice" );
+            btn.setMouseTransparent( false );
+            btn.setSelected( false );
+        }
+        
+        submitButton.setVisible( true );
+        submitButton.setManaged( true );
+        continueButton.setVisible( false );
+        continueButton.setManaged( false );
+    }
+
+    @FXML
+    private void submitQuestion(ActionEvent event) {
+        
+        submitButton.setVisible( false );
+        submitButton.setManaged( false );
+        continueButton.setVisible( true );
+        continueButton.setManaged( true );
+        
+        SessionManager session = UserState.getState().getSession();
+        boolean hit = false;
+        
+        for ( int i = 0; i < 4; i++ ) {
+            RadioButton btn = (RadioButton)choiceGroup.getToggles().get( i );
+            btn.setMouseTransparent( true );
+            
+            if ( btn.isSelected() && answers.get( i ).getValidity() ) {
+                hit = true;
+            }
+            
+            if ( answers.get( i ).getValidity() ) {
+                btn.getStyleClass().add( "correct-choice" );
+            }
+            else if ( btn.isSelected() ) {
+                btn.getStyleClass().add( "wrong-choice" );
+            }
+        }
+        
+        if ( hit ) {
+            session.saveHit();
+        }
+        else {
+            session.saveFault();
+        }
+    }
+
+    @FXML
+    private void onContinue(ActionEvent event) {
+        manager.showQuestionList();
+    }
+
+    @FXML
+    private void onOpenMap(ActionEvent event) {
+        if ( manager.mapShowingProperty().getValue() ) {
+            manager.closeMap();
+        }
+        else {
+            manager.showMap();
+        }
     }
     
 }
