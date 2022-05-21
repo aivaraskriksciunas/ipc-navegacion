@@ -15,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import utils.QuestionViewManager;
 import state.UserState;
 
 /**
@@ -23,6 +24,7 @@ import state.UserState;
  * @author Aivaras Kriksciunas
  */
 public class MainScreenController implements Initializable {
+    private QuestionViewManager questionViewManager;
 
     @FXML
     private Label userName;
@@ -34,11 +36,14 @@ public class MainScreenController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-            UserState.getState().addUserListener((o, oldValue, newValue) -> {
-                if (newValue == null) return;
-                userName.setText(newValue.getNickName());
-                userAvatar.setImage(UserState.getState().getUser().getAvatar());
-            });
+    
+        questionViewManager = new QuestionViewManager();
+        
+        UserState.getState().addUserListener((o, oldValue, newValue) -> {
+            if (newValue == null) return;
+            userName.setText(newValue.getNickName());
+            userAvatar.setImage(UserState.getState().getUser().getAvatar());
+        });
         
     }    
     private void onTestMap(ActionEvent event) {
@@ -53,10 +58,20 @@ public class MainScreenController implements Initializable {
             stage.setTitle( "Map Tools" );
             stage.setScene( scene );
             stage.show();
-}
+        }
         catch ( IOException e ) {
             System.out.println( e.toString() );
         }
+    }
+
+    @FXML
+    private void onOpenRandomQuestion(ActionEvent event) {
+        questionViewManager.chooseRandomQuestion();
+    }
+
+    @FXML
+    private void showQuestionList(ActionEvent event) {
+        questionViewManager.showQuestionList();
     }
     
 }
