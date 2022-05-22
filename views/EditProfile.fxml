@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EditProfileController">
+   <children>
+      <VBox prefHeight="651.0" prefWidth="426.0">
+         <padding>
+            <Insets bottom="40.0" left="60.0" right="60.0" top="20.0" />
+         </padding>
+         <children>
+            <Label text="Update Profile">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
+            </Label>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <VBox alignment="TOP_CENTER" prefHeight="146.0" prefWidth="114.0">
+                     <children>
+                        <ImageView fx:id="avatarImage" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../avatars/default.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Button mnemonicParsing="false" onAction="#onChooseAvatar" prefHeight="26.0" prefWidth="120.0" text="Choose avatar" />
+                     </children>
+                     <padding>
+                        <Insets right="8.0" />
+                     </padding>
+                  </VBox>
+                  <VBox prefHeight="120.0" prefWidth="199.0">
+                     <children>
+                        <Label text="Username">
+                           <VBox.margin>
+                              <Insets bottom="2.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextField id="usernameField" fx:id="usernameField" disable="true" editable="false">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </TextField>
+                        <Text id="usernameErrorLabel" fx:id="usernameError" fill="#d10000" strokeType="OUTSIDE" strokeWidth="0.0" text="Error message">
+                           <VBox.margin>
+                              <Insets top="2.0" />
+                           </VBox.margin>
+                        </Text>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <Label text="Email">
+               <VBox.margin>
+                  <Insets bottom="2.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+            <TextField id="emailField" fx:id="emailField">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </TextField>
+            <Text id="emailErrorLabel" fx:id="emailError" fill="#d10000" strokeType="OUTSIDE" strokeWidth="0.0" text="Error message">
+               <VBox.margin>
+                  <Insets top="2.0" />
+               </VBox.margin>
+            </Text>
+            <Label text="Date of birth">
+               <VBox.margin>
+                  <Insets bottom="2.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+            <DatePicker id="dobField" fx:id="dobField" prefHeight="26.0" prefWidth="305.0">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </DatePicker>
+            <Text id="emailErrorLabel" fx:id="dobError" fill="#d10000" strokeType="OUTSIDE" strokeWidth="0.0" text="Error message">
+               <VBox.margin>
+                  <Insets top="2.0" />
+               </VBox.margin>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Change Password">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Label text="Current Password">
+               <VBox.margin>
+                  <Insets bottom="2.0" top="5.0" />
+               </VBox.margin>
+            </Label>
+            <PasswordField id="passwordField" fx:id="passwordField">
+               <VBox.margin>
+                  <Insets bottom="2.0" />
+               </VBox.margin>
+            </PasswordField>
+            <Text id="passwordErrorLabel" fx:id="passwordError" fill="#d10000" strokeType="OUTSIDE" strokeWidth="0.0" text="Error message" />
+            <Label text="New Password">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Label>
+            <PasswordField id="confirmPasswordField" fx:id="newPasswordField">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </PasswordField>
+            <Text fill="#8e8e8e" strokeType="OUTSIDE" strokeWidth="0.0" text="Password must contain 8-20 characters, at least one lower and upper case letter, at least one digit and special character (!@#$%&amp;*()-+=)" wrappingWidth="305.37579345703125">
+               <font>
+                  <Font name="System Italic" size="11.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Text>
+            <Text id="passwordConfirmErrorLabel" fx:id="NewPasswordError" fill="#d10000" strokeType="OUTSIDE" strokeWidth="0.0" text="Error message">
+               <VBox.margin>
+                  <Insets top="2.0" />
+               </VBox.margin>
+            </Text>
+            <HBox prefHeight="52.0" prefWidth="306.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <Button maxWidth="1.7976931348623157E308" minWidth="-Infinity" mnemonicParsing="false" onAction="#onUpdate" style="-fx-background-color: #1E88E5; -fx-text-fill: #ffffff;" text="Update Profile" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#onCancel" prefHeight="26.0" prefWidth="77.0" text="Cancel" HBox.hgrow="ALWAYS" />
+               </children>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
