@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
@@ -9,167 +8,158 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RegisterController">
-   <children>
-      <VBox styleClass="secondaryBG" stylesheets="@login.css">
-         <children>
-            <VBox styleClass="mainBG">
-               <children>
-                  <VBox prefHeight="651.0" prefWidth="426.0">
-                     <padding>
+<VBox alignment="CENTER" minHeight="700.0" minWidth="500.0" prefHeight="700.0" prefWidth="500.0" styleClass="secondaryBG" stylesheets="@main.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RegisterController">
+    <children>
+        <VBox alignment="CENTER" styleClass="primaryStandoutBG" stylesheets="@main.css">
+            <children>
+                <VBox prefHeight="651.0" prefWidth="426.0">
+                    <padding>
                         <Insets bottom="40.0" left="60.0" right="60.0" top="40.0" />
-                     </padding>
-                     <children>
+                    </padding>
+                    <children>
                         <Label styleClass="textLight" stylesheets="@welcome.css" text="Register">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets bottom="20.0" />
-                           </VBox.margin>
+                            <font>
+                                <Font size="24.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="20.0" />
+                            </VBox.margin>
                         </Label>
                         <HBox prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <VBox alignment="TOP_CENTER" prefHeight="146.0" prefWidth="114.0">
-                                 <children>
-                                    <ImageView fx:id="avatarImage" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../../avatars/default.png" />
-                                       </image>
-                                       <VBox.margin>
-                                          <Insets bottom="5.0" />
-                                       </VBox.margin>
-                                    </ImageView>
-                                    <Button mnemonicParsing="false" onAction="#onChooseAvatar" prefHeight="26.0" prefWidth="120.0" text="Choose avatar" />
-                                 </children>
-                                 <padding>
-                                    <Insets right="8.0" />
-                                 </padding>
-                              </VBox>
-                              <VBox prefHeight="120.0" prefWidth="199.0">
-                                 <children>
-                                    <Label styleClass="textLight" stylesheets="@welcome.css" text="Username">
-                                       <VBox.margin>
-                                          <Insets bottom="2.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                    <TextField id="usernameField" fx:id="usernameField">
-                                       <VBox.margin>
-                                          <Insets />
-                                       </VBox.margin>
-                                       <opaqueInsets>
-                                          <Insets />
-                                       </opaqueInsets>
-                                    </TextField>
-                                    <Text id="usernameErrorLabel" fx:id="usernameError" fill="#e80000" strokeType="OUTSIDE" strokeWidth="0.0" text="Error message">
-                                       <VBox.margin>
-                                          <Insets top="2.0" />
-                                       </VBox.margin>
-                                    </Text>
-                                    <Text fill="#8e8e8e" strokeType="OUTSIDE" strokeWidth="0.0" text="Username must be 6-15 characters long and must not contain spaces." wrappingWidth="195.7758331298828">
-                                       <font>
-                                          <Font name="System Italic" size="11.0" />
-                                       </font>
-                                       <VBox.margin>
-                                          <Insets top="2.0" />
-                                       </VBox.margin>
-                                    </Text>
-                                 </children>
-                              </VBox>
-                           </children>
+                            <children>
+                                <VBox alignment="TOP_CENTER" prefHeight="146.0" prefWidth="114.0">
+                                    <children>
+                                        <ImageView fx:id="avatarImage" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../../avatars/default.png" />
+                                            </image>
+                                            <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                            </VBox.margin>
+                                        </ImageView>
+                                        <Button mnemonicParsing="false" onAction="#onChooseAvatar" prefHeight="26.0" prefWidth="120.0" styleClass="btnLight" stylesheets="@main.css" text="Choose avatar" />
+                                    </children>
+                                    <padding>
+                                        <Insets right="8.0" />
+                                    </padding>
+                                </VBox>
+                                <VBox prefHeight="120.0" prefWidth="199.0">
+                                    <children>
+                                        <Label styleClass="textLight" stylesheets="@welcome.css" text="Username">
+                                            <VBox.margin>
+                                                <Insets bottom="2.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                        <TextField fx:id="usernameField" styleClass="txtInput" stylesheets="@main.css">
+                                            <VBox.margin>
+                                                <Insets />
+                                            </VBox.margin>
+                                            <opaqueInsets>
+                                                <Insets />
+                                            </opaqueInsets>
+                                        </TextField>
+                                        <Text fx:id="usernameError" fill="#e83d3d" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="errorText" text="Error message">
+                                            <VBox.margin>
+                                                <Insets top="2.0" />
+                                            </VBox.margin>
+                                        </Text>
+                                        <Text fill="#8e8e8e" strokeType="OUTSIDE" strokeWidth="0.0" text="Username must be 6-15 characters long and must not contain spaces." wrappingWidth="195.7758331298828">
+                                            <font>
+                                                <Font name="System Italic" size="11.0" />
+                                            </font>
+                                            <VBox.margin>
+                                                <Insets top="2.0" />
+                                            </VBox.margin>
+                                        </Text>
+                                    </children>
+                                </VBox>
+                            </children>
                         </HBox>
                         <Label styleClass="textLight" stylesheets="@welcome.css" text="Email">
-                           <VBox.margin>
-                              <Insets bottom="2.0" top="10.0" />
-                           </VBox.margin>
+                            <VBox.margin>
+                                <Insets bottom="2.0" top="10.0" />
+                            </VBox.margin>
                         </Label>
-                        <TextField id="emailField" fx:id="emailField">
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
+                        <TextField id="emailField" fx:id="emailField" styleClass="txtInput">
+                            <VBox.margin>
+                                <Insets />
+                            </VBox.margin>
                         </TextField>
-                        <Text id="emailErrorLabel" fx:id="emailError" fill="#e80000" strokeType="OUTSIDE" strokeWidth="0.0" text="Error message">
-                           <VBox.margin>
-                              <Insets top="2.0" />
-                           </VBox.margin>
+                        <Text fx:id="emailError" fill="#eb3a3a" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="errorText" text="Error message">
+                            <VBox.margin>
+                                <Insets top="2.0" />
+                            </VBox.margin>
                         </Text>
                         <Label styleClass="textLight" stylesheets="@welcome.css" text="Date of birth">
-                           <VBox.margin>
-                              <Insets bottom="2.0" top="10.0" />
-                           </VBox.margin>
+                            <VBox.margin>
+                                <Insets bottom="2.0" top="10.0" />
+                            </VBox.margin>
                         </Label>
-                        <DatePicker id="dobField" fx:id="dobField" prefHeight="26.0" prefWidth="305.0">
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
+                        <DatePicker id="dobField" fx:id="dobField" prefHeight="26.0" prefWidth="305.0" styleClass="txtInput">
+                            <VBox.margin>
+                                <Insets />
+                            </VBox.margin>
                         </DatePicker>
-                        <Text id="emailErrorLabel" fx:id="dobError" fill="#e80000" strokeType="OUTSIDE" strokeWidth="0.0" text="Error message">
-                           <VBox.margin>
-                              <Insets top="2.0" />
-                           </VBox.margin>
+                        <Text fx:id="dobError" fill="#e80000" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="errorText" text="Error message">
+                            <VBox.margin>
+                                <Insets top="2.0" />
+                            </VBox.margin>
                         </Text>
                         <Label styleClass="textLight" stylesheets="@welcome.css" text="Password">
-                           <VBox.margin>
-                              <Insets bottom="2.0" top="30.0" />
-                           </VBox.margin>
+                            <VBox.margin>
+                                <Insets bottom="2.0" top="30.0" />
+                            </VBox.margin>
                         </Label>
-                        <PasswordField id="passwordField" fx:id="passwordField">
-                           <VBox.margin>
-                              <Insets bottom="2.0" />
-                           </VBox.margin>
+                        <PasswordField id="passwordField" fx:id="passwordField" styleClass="txtInput">
+                            <VBox.margin>
+                                <Insets bottom="2.0" />
+                            </VBox.margin>
                         </PasswordField>
-                        <Text id="passwordErrorLabel" fx:id="passwordError" fill="#e80000" strokeType="OUTSIDE" strokeWidth="0.0" text="Error message" />
+                        <Text fx:id="passwordError" fill="#e80000" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="errorText" text="Error message" />
                         <Text fill="#8e8e8e" strokeType="OUTSIDE" strokeWidth="0.0" text="Password must contain 8-20 characters, at least one lower and upper case letter, at least one digit and special character (!@#$%&amp;*()-+=)" wrappingWidth="305.37579345703125">
-                           <font>
-                              <Font name="System Italic" size="11.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
+                            <font>
+                                <Font name="System Italic" size="11.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets />
+                            </VBox.margin>
                         </Text>
                         <Label styleClass="textLight" stylesheets="@welcome.css" text="Confirm password">
-                           <VBox.margin>
-                              <Insets top="10.0" />
-                           </VBox.margin>
+                            <VBox.margin>
+                                <Insets top="10.0" />
+                            </VBox.margin>
                         </Label>
-                        <PasswordField id="confirmPasswordField" fx:id="passwordConfirmField">
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
+                        <PasswordField id="confirmPasswordField" fx:id="passwordConfirmField" styleClass="txtInput">
+                            <VBox.margin>
+                                <Insets />
+                            </VBox.margin>
                         </PasswordField>
-                        <Text id="passwordConfirmErrorLabel" fx:id="passwordConfirmError" fill="#e80000" strokeType="OUTSIDE" strokeWidth="0.0" text="Error message">
-                           <VBox.margin>
-                              <Insets top="2.0" />
-                           </VBox.margin>
+                        <Text fx:id="passwordConfirmError" fill="#e80000" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="errorText" text="Error message">
+                            <VBox.margin>
+                                <Insets top="2.0" />
+                            </VBox.margin>
                         </Text>
                         <HBox prefHeight="52.0" prefWidth="306.0" VBox.vgrow="ALWAYS">
-                           <children>
-                              <Button maxWidth="1.7976931348623157E308" minWidth="-Infinity" mnemonicParsing="false" onAction="#onRegister" stylesheets="@welcome.css" text="Register" HBox.hgrow="ALWAYS">
-                                 <HBox.margin>
-                                    <Insets right="20.0" />
-                                 </HBox.margin>
-                                 <styleClass>
-                                    <String fx:value="textLight" />
-                                    <String fx:value="blueRegBtn" />
-                                 </styleClass>
-                              </Button>
-                              <Button mnemonicParsing="false" onAction="#onCancel" prefHeight="26.0" prefWidth="77.0" styleClass="btnLight" text="Cancel" HBox.hgrow="ALWAYS" />
-                           </children>
-                           <VBox.margin>
-                              <Insets top="20.0" />
-                           </VBox.margin>
+                            <children>
+                                <Button maxWidth="1.7976931348623157E308" minWidth="-Infinity" mnemonicParsing="false" onAction="#onRegister" styleClass="btnLight" stylesheets="@main.css" text="Register" HBox.hgrow="ALWAYS">
+                                    <HBox.margin>
+                                        <Insets right="20.0" />
+                                    </HBox.margin>
+                                </Button>
+                                <Button mnemonicParsing="false" onAction="#onCancel" prefHeight="26.0" prefWidth="77.0" styleClass="btnDark" stylesheets="@main.css" text="Cancel" HBox.hgrow="ALWAYS" />
+                            </children>
+                            <VBox.margin>
+                                <Insets top="20.0" />
+                            </VBox.margin>
                         </HBox>
-                     </children>
-                  </VBox>
-               </children>
-            </VBox>
-         </children>
-      </VBox>
-   </children>
-</AnchorPane>
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+    </children>
+</VBox>
