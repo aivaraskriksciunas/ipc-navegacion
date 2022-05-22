@@ -12,6 +12,7 @@
 <?import javafx.scene.text.Font?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="mainBG" stylesheets="@mainScreen.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainScreenController">
+
    <children>
       <MenuBar>
         <menus>
@@ -35,7 +36,7 @@
       </MenuBar>
       <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="200.0" spacing="20.0">
          <children>
-            <HBox alignment="CENTER" onMouseClicked="#editProfile" prefHeight="10.0" spacing="10.0" styleClass="userArea" stylesheets="@mainScreen.css">
+            <HBox alignment="CENTER" onMouseClicked="#editProfile" prefHeight="10.0" spacing="10.0" styleClass="userArea" stylesheets="@main.css">
                <children>
                   <Label fx:id="userName" onMouseClicked="#editProfile" styleClass="textDark" stylesheets="@mainScreen.css" text="userName">
                      <font>
