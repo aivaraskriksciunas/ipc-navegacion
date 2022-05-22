@@ -20,21 +20,21 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EditProfileController">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="426.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EditProfileController">
    <children>
-      <VBox prefHeight="651.0" prefWidth="426.0">
+      <VBox layoutY="-5.0" prefHeight="456.0" prefWidth="426.0">
          <padding>
             <Insets bottom="40.0" left="60.0" right="60.0" top="20.0" />
          </padding>
          <children>
-            <Label text="Update Profile">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Profile">
                <font>
-                  <Font size="24.0" />
+                  <Font size="25.0" />
                </font>
                <VBox.margin>
-                  <Insets bottom="20.0" />
+                  <Insets bottom="15.0" />
                </VBox.margin>
-            </Label>
+            </Text>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <VBox alignment="TOP_CENTER" prefHeight="146.0" prefWidth="114.0">
@@ -149,6 +149,13 @@
                   <Insets top="2.0" />
                </VBox.margin>
             </Text>
+            <Label text="Confim New Password">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Label>
+            <PasswordField fx:id="confirmNewPasswordField" />
+            <Text fx:id="confrimNewPasswordError" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Error message" />
             <HBox prefHeight="52.0" prefWidth="306.0" VBox.vgrow="ALWAYS">
                <children>
                   <Button maxWidth="1.7976931348623157E308" minWidth="-Infinity" mnemonicParsing="false" onAction="#onUpdate" style="-fx-background-color: #1E88E5; -fx-text-fill: #ffffff;" text="Update Profile" HBox.hgrow="ALWAYS">
