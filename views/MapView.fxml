@@ -44,10 +44,11 @@
                         <Insets right="8.0" />
                      </HBox.margin>
                   </ToggleButton>
-                  <ToggleButton fx:id="textUtilsBtn" mnemonicParsing="false" styleClass="btnLight" text="Text" toggleGroup="$utilSelection" />
+                  <ToggleButton fx:id="textUtilsBtn" mnemonicParsing="false" styleClass="btnLight" text="Text" toggleGroup="$utilSelection">
                      <HBox.margin>
                         <Insets right="8.0" />
-                     </HBox.margin></ToggleButton>
+                     </HBox.margin>
+                  </ToggleButton>
                   <ToggleButton fx:id="moveProtractorBtn" mnemonicParsing="false" text="Move Protractor" toggleGroup="$utilSelection" />
                   <HBox alignment="CENTER_RIGHT" fillHeight="false" prefHeight="27.0" prefWidth="168.0" HBox.hgrow="ALWAYS">
                      <children>
