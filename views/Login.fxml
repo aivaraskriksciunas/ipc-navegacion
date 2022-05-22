@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox alignment="CENTER" minHeight="450.0" minWidth="500.0" prefHeight="500.0" prefWidth="800.0" styleClass="secondaryBG" stylesheets="@login.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
+<HBox alignment="CENTER" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" styleClass="secondaryBG" stylesheets="@main.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
    <children>
-      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="mainBG" stylesheets="@login.css">
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" styleClass="primaryStandoutBG" stylesheets="@main.css">
          <children>
             <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" stylesheets="@login.css">
                <children>
@@ -26,7 +26,7 @@
                   </Label>
                </children>
                <VBox.margin>
-                  <Insets />
+                  <Insets bottom="10.0" />
                </VBox.margin>
                <padding>
                   <Insets top="10.0" />
@@ -40,13 +40,19 @@
                            <font>
                               <Font size="18.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
                         </Label>
-                        <TextField fx:id="txtUsername" />
+                        <TextField fx:id="txtUsername" styleClass="txtInput" stylesheets="@main.css">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font></TextField>
                      </children>
                   </VBox>
                </children>
                <VBox.margin>
-                  <Insets />
+                  <Insets bottom="10.0" />
                </VBox.margin>
                <padding>
                   <Insets left="45.0" />
@@ -60,8 +66,14 @@
                            <font>
                               <Font size="18.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
                         </Label>
-                        <PasswordField fx:id="txtPassword" />
+                        <PasswordField fx:id="txtPassword" styleClass="txtInput" stylesheets="@main.css">
+                           <font>
+                              <Font size="14.0" />
+                           </font></PasswordField>
                      </children>
                   </VBox>
                </children>
@@ -74,24 +86,23 @@
             </HBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Label fx:id="unknownLabel" text="Incorrect username or password" textFill="#c90505" visible="false">
+                  <Label fx:id="unknownLabel" text="Incorrect username or password" textFill="#e83f3f" visible="false">
                      <font>
-                        <Font name="System Bold" size="14.0" />
+                        <Font name="System Bold" size="16.0" />
                      </font>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
                   </Label>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="500.0">
                      <children>
-                        <Button fx:id="loginButton" mnemonicParsing="false" onAction="#logUserIn" prefWidth="100.0" stylesheets="@login.css" text="Login" textFill="#2d8d26">
+                        <Button fx:id="loginButton" mnemonicParsing="false" onAction="#logUserIn" prefWidth="100.0" styleClass="btnLight" stylesheets="@main.css" text="Login" textFill="#2d8d26">
                            <font>
                               <Font name="Segoe UI Bold" size="18.0" />
                            </font>
                            <HBox.margin>
                               <Insets right="20.0" />
                            </HBox.margin>
-                           <styleClass>
-                              <String fx:value="acceptBtnTxt" />
-                              <String fx:value="textLight" />
-                           </styleClass>
                         </Button>
                         <Button mnemonicParsing="false" onAction="#closeLogin" prefWidth="100.0" stylesheets="@login.css" text="Cancel" textFill="#c62424">
                            <font>
@@ -101,8 +112,8 @@
                               <Insets left="20.0" />
                            </HBox.margin>
                            <styleClass>
-                              <String fx:value="btnLight" />
-                              <String fx:value="textDark" />
+                              <String fx:value="btnDark" />
+                              <String fx:value="textLight" />
                            </styleClass>
                         </Button>
                      </children>
