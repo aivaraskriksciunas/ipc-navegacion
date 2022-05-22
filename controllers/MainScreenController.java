@@ -54,20 +54,12 @@ public class MainScreenController implements Initializable {
     }    
 
     @FXML
-    private void editProfile(ActionEvent event) {
-    }
-
-    @FXML
     private void logUserOut(ActionEvent event) {
         UserState.getState().logout();
     }
 
     @FXML
     private void displayAbout(ActionEvent event) {
-    }
-
-    @FXML
-    private void editProfile(MouseEvent event) {
     }
 
     @FXML
@@ -105,7 +97,17 @@ public class MainScreenController implements Initializable {
     }
 
     @FXML
-    private void onEditProfile(MouseEvent event) {
+    private void editProfile(MouseEvent event) {
+        showEditProfile();
+    }
+
+    @FXML
+    private void editProfileMenuOption(ActionEvent event) {
+        showEditProfile();
+    }
+    
+    
+    private void showEditProfile() {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation( getClass().getResource("../views/EditProfile.fxml") );
         
