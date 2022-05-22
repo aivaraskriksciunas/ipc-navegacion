@@ -37,7 +37,6 @@ public class WelcomeScreenController implements Initializable {
         
         try {
             Scene scene = new Scene(fxmlLoader.load());
-            scene.getStylesheets().add(getClass().getResource("/main.css").toExternalForm());
             Stage stage = new Stage();
             
             // Send a reference of the stage to the controller

@@ -14,9 +14,9 @@
    <children>
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" styleClass="primaryStandoutBG" stylesheets="@main.css">
          <children>
-            <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" stylesheets="@login.css">
+            <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" stylesheets="@main.css">
                <children>
-                  <Label styleClass="titleTextLight" stylesheets="@login.css" text="Login">
+                  <Label styleClass="titleTextLight" stylesheets="@main.css" text="Login">
                      <font>
                         <Font name="System Bold" size="28.0" />
                      </font>
@@ -36,7 +36,7 @@
                <children>
                   <VBox prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Label styleClass="textLight" stylesheets="@login.css" text="Username:">
+                        <Label styleClass="textLight" stylesheets="@main.css" text="Username:">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -62,7 +62,7 @@
                <children>
                   <VBox prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Label styleClass="textLight" stylesheets="@login.css" text="Password:">
+                        <Label styleClass="textLight" stylesheets="@main.css" text="Password:">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -104,7 +104,7 @@
                               <Insets right="20.0" />
                            </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#closeLogin" prefWidth="100.0" stylesheets="@login.css" text="Cancel" textFill="#c62424">
+                        <Button mnemonicParsing="false" onAction="#closeLogin" prefWidth="100.0" stylesheets="@main.css" text="Cancel" textFill="#c62424">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
