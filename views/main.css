@@ -21,6 +21,11 @@
     -fx-font-weight: bold;
 }
 
+.titleFillLight {
+    -fx-fill: #f8f9fa;
+    -fx-font-weight: bold;
+}
+
 .btnDark {
     -fx-background-color: #212529;
     -fx-border-color: white;
