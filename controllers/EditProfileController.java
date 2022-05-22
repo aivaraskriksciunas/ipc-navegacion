@@ -197,24 +197,31 @@ public class EditProfileController implements Initializable {
     private void onUpdate(ActionEvent event) {
         clearErrorMessages();
         
-        if ( !validateFields() ) return;
-        
-
-        
-        
+        boolean valid = true;
+ 
         try {
             
-            user.setEmail(emailField.getText());
-            user.setBirthdate(dobField.getValue());
-            user.setAvatar(avatarImage.getImage());
+            if ( validateFields() ){
+                user.setEmail(emailField.getText());
+                user.setBirthdate(dobField.getValue());
+                user.setAvatar(avatarImage.getImage());
+            } else {
+                valid = false;
+            }
             if (!passwordField.getText().isEmpty() || !newPasswordField.getText().isEmpty()){
                 if(!validatePassword()){
-                    return;
+                    valid = false;
                 }else{
-                user.setPassword(newPasswordField.getText());
+                    if(valid){
+                        user.setPassword(newPasswordField.getText());
+                    }
+                    
                 }
+                
             }
-            
+            if (!valid){
+                return;
+            }
 
             
             
