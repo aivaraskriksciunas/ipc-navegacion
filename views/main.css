@@ -30,6 +30,16 @@
     -fx-text-fill:#FFEEFF;
 }
 
+.btnDarkBT {
+    -fx-background-color: #212529;
+    -fx-border-color: white;
+    -fx-border-radius: 1em;
+    -fx-background-radius: 1em;
+    -fx-text-fill:#FFEEFF;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
 .acceptBtnTxt {
     -fx-background-color: #1E88E5;
     -fx-border-color: white;
@@ -57,6 +67,14 @@
 }
 
 .btnLight {
+    -fx-background-color: #FFEEFF;
+    -fx-background-radius: 1em;
+    /*-fx-font-size: 16px;*/
+    -fx-font-weight: bold;
+    -fx-text-fill: #212529;
+}
+
+.btnLightBT {
     -fx-background-color: #FFEEFF;
     -fx-background-radius: 1em;
     -fx-font-size: 16px;

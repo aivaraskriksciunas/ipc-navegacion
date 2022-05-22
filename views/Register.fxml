@@ -22,7 +22,7 @@
                         <Insets bottom="40.0" left="60.0" right="60.0" top="40.0" />
                     </padding>
                     <children>
-                        <Label styleClass="textLight" stylesheets="@welcome.css" text="Register">
+                        <Label styleClass="textLight" stylesheets="@main.css" text="Register">
                             <font>
                                 <Font size="24.0" />
                             </font>
@@ -50,7 +50,7 @@
                                 </VBox>
                                 <VBox prefHeight="120.0" prefWidth="199.0">
                                     <children>
-                                        <Label styleClass="textLight" stylesheets="@welcome.css" text="Username">
+                                        <Label styleClass="textLight" stylesheets="@main.css" text="Username">
                                             <VBox.margin>
                                                 <Insets bottom="2.0" />
                                             </VBox.margin>
@@ -80,7 +80,7 @@
                                 </VBox>
                             </children>
                         </HBox>
-                        <Label styleClass="textLight" stylesheets="@welcome.css" text="Email">
+                        <Label styleClass="textLight" stylesheets="@main.css" text="Email">
                             <VBox.margin>
                                 <Insets bottom="2.0" top="10.0" />
                             </VBox.margin>
@@ -95,7 +95,7 @@
                                 <Insets top="2.0" />
                             </VBox.margin>
                         </Text>
-                        <Label styleClass="textLight" stylesheets="@welcome.css" text="Date of birth">
+                        <Label styleClass="textLight" stylesheets="@main.css" text="Date of birth">
                             <VBox.margin>
                                 <Insets bottom="2.0" top="10.0" />
                             </VBox.margin>
@@ -110,7 +110,7 @@
                                 <Insets top="2.0" />
                             </VBox.margin>
                         </Text>
-                        <Label styleClass="textLight" stylesheets="@welcome.css" text="Password">
+                        <Label styleClass="textLight" stylesheets="@main.css" text="Password">
                             <VBox.margin>
                                 <Insets bottom="2.0" top="30.0" />
                             </VBox.margin>
@@ -129,7 +129,7 @@
                                 <Insets />
                             </VBox.margin>
                         </Text>
-                        <Label styleClass="textLight" stylesheets="@welcome.css" text="Confirm password">
+                        <Label styleClass="textLight" stylesheets="@main.css" text="Confirm password">
                             <VBox.margin>
                                 <Insets top="10.0" />
                             </VBox.margin>
@@ -146,12 +146,12 @@
                         </Text>
                         <HBox prefHeight="52.0" prefWidth="306.0" VBox.vgrow="ALWAYS">
                             <children>
-                                <Button maxWidth="1.7976931348623157E308" minWidth="-Infinity" mnemonicParsing="false" onAction="#onRegister" styleClass="btnLight" stylesheets="@main.css" text="Register" HBox.hgrow="ALWAYS">
+                                <Button maxWidth="1.7976931348623157E308" minWidth="-Infinity" mnemonicParsing="false" onAction="#onRegister" styleClass="btnLightBT" stylesheets="@main.css" text="Register" HBox.hgrow="ALWAYS">
                                     <HBox.margin>
                                         <Insets right="20.0" />
                                     </HBox.margin>
                                 </Button>
-                                <Button mnemonicParsing="false" onAction="#onCancel" prefHeight="26.0" prefWidth="77.0" styleClass="btnDark" stylesheets="@main.css" text="Cancel" HBox.hgrow="ALWAYS" />
+                                <Button mnemonicParsing="false" onAction="#onCancel" prefHeight="26.0" prefWidth="77.0" styleClass="btnDarkBT" stylesheets="@main.css" text="Cancel" HBox.hgrow="ALWAYS" />
                             </children>
                             <VBox.margin>
                                 <Insets top="20.0" />
