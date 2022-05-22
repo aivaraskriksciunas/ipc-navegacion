@@ -53,6 +53,7 @@ public class MapViewController implements Initializable {
         EDITING_LINE,
         EDITING_ARC,
         EDITING_TEXT,
+        MOVING_PROTRACTOR,
         NONE,
     }
     
@@ -145,6 +146,11 @@ public class MapViewController implements Initializable {
     @FXML
     private TextField editTextValueControl;
     
+    // Protractor
+    @FXML
+    private ToggleButton moveProtractorBtn;
+    private ImageView protractor;
+    
     // Node that is currently selected for editing
     private Node selectedNode;
     
@@ -154,6 +160,7 @@ public class MapViewController implements Initializable {
     private double scale = 1;
     
     private ObjectProperty<MapAction> currentAction;
+    
     
     /**
      * Initializes the controller class.
@@ -261,6 +268,8 @@ public class MapViewController implements Initializable {
                 drawingText.setText( nv );
             }
         });
+        
+        addProtractor();
     }    
     
     @FXML
@@ -298,6 +307,9 @@ public class MapViewController implements Initializable {
         }
         else if ( btn == textUtilsBtn ) {
             currentAction.set( MapAction.PLACING_TEXT );
+        }
+        else if ( btn == moveProtractorBtn ) {
+            currentAction.set( MapAction.MOVING_PROTRACTOR );
         }
         else {
             currentAction.set( MapAction.NONE );
@@ -413,6 +425,7 @@ public class MapViewController implements Initializable {
         setNodeVisibility( editArcOptions, false );
         setNodeVisibility( textOptions, false );
         setNodeVisibility( editTextOptions, false );
+        mapGroup.setOnMouseMoved( null );
         
         if ( null != action ) switch (action) {
             case PLACING_POINT:
@@ -439,6 +452,12 @@ public class MapViewController implements Initializable {
                 break;
             case EDITING_TEXT:
                 setNodeVisibility( editTextOptions, true );
+                break;
+            case MOVING_PROTRACTOR:
+                mapGroup.setOnMouseMoved( e -> {
+                    protractor.setX( e.getX() - protractor.getBoundsInParent().getWidth() / 2 );
+                    protractor.setY( e.getY() - protractor.getBoundsInParent().getHeight() / 2 );
+                });
                 break;
             default:
                 break;
@@ -475,6 +494,13 @@ public class MapViewController implements Initializable {
                 textUtilsBtn.setSelected( false );
             }
         }
+        else if ( currentAction.get() == MapAction.MOVING_PROTRACTOR ) {
+            currentAction.set( MapAction.NONE );
+        }
+        else if ( isEditing() ) {
+            setSelectedNode( null );
+            currentAction.set( MapAction.NONE );
+        }
     }
     
     private void updateLineEnd( MouseEvent event ) {
@@ -504,6 +530,8 @@ public class MapViewController implements Initializable {
         
         editPointColorControl.setValue( (Color)c.getFill() );
         editPointSizeControl.setValue( c.getRadius() );
+        
+        event.consume();
     }
     
     private void onLineClicked( MouseEvent event ) {
@@ -518,6 +546,8 @@ public class MapViewController implements Initializable {
         
         editLineColorControl.setValue( (Color)c.getStroke());
         editLineWidthControl.setValue( c.getStrokeWidth() );
+        
+        event.consume();
     }
     
     private void onArcClicked( MouseEvent event ) {
@@ -532,6 +562,8 @@ public class MapViewController implements Initializable {
         
         editArcColorControl.setValue( (Color)c.getStroke());
         editArcWidthControl.setValue( c.getStrokeWidth() );
+        
+        event.consume();
     }
     
     private void onTextClicked( MouseEvent event ) {
@@ -546,6 +578,8 @@ public class MapViewController implements Initializable {
         editTextColorControl.setValue( (Color)t.getFill() );
         editTextSizeControl.setValue( t.getFont().getSize() );
         editTextValueControl.setText( t.getText() );
+        
+        event.consume();
     }
     
     private void setSelectedNode( Node nd ) {
@@ -561,6 +595,20 @@ public class MapViewController implements Initializable {
                 currentAction.get() == MapAction.EDITING_POINT ||
                 currentAction.get() == MapAction.EDITING_ARC ||
                 currentAction.get() == MapAction.EDITING_TEXT;
+    }
+    
+    
+    private void addProtractor() {
+        try {
+            protractor = new ImageView();
+            protractor.setImage( new Image( "transportador.png" ) );
+            protractor.setOpacity( 0.4 );
+        }
+        catch ( Exception e ) {
+            NotifUtils.showError( "Resource not found", "File 'transportador.png' was not found. Map functionality will be broken.");
+        }
+        
+        mapGroup.getChildren().add( protractor );
     }
     
 }
