@@ -114,7 +114,7 @@ public class MainScreenController implements Initializable {
         try {
             Scene scene = new Scene( fxmlLoader.load() );
             Stage sessionWindow = new Stage();
-            
+            sessionWindow.setResizable(false);
             sessionWindow.setTitle( "Edit user profile" );
             sessionWindow.setScene( scene );
             sessionWindow.initModality( Modality.APPLICATION_MODAL );

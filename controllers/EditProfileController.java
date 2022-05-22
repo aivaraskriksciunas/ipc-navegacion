@@ -17,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -60,6 +61,11 @@ public class EditProfileController implements Initializable {
     private PasswordField newPasswordField;
     @FXML
     private Text NewPasswordError;
+    @FXML
+    private TextField confirmNewPasswordField;
+    @FXML
+    private Text confrimNewPasswordError;
+
     
     
     public void setStage( Stage stage ) {
@@ -119,7 +125,7 @@ public class EditProfileController implements Initializable {
         
             if ( !passwordField.getText().equals(user.getPassword()) ) {
                 valid = false;
-                setErrorMessage( passwordError, "Password doenst match try again" );
+                setErrorMessage( passwordError, "Incorrect Password" );
             } else if (newPasswordField.getText().equals(passwordField.getText())){
                 valid = false;
                 setErrorMessage(NewPasswordError, "New password cannot be the same as old");
@@ -138,7 +144,12 @@ public class EditProfileController implements Initializable {
                 valid = false;
                 setErrorMessage( NewPasswordError, "Password does not match the criteria." );
             }
-        
+            
+            if(!confirmNewPasswordField.getText().equals(newPasswordField.getText())){
+                valid = false;
+                setErrorMessage(confrimNewPasswordError, "New passwords do not match ");
+                
+            }
         return valid;
     }
     private void setErrorMessage( Text element, String error ) {
@@ -159,6 +170,7 @@ public class EditProfileController implements Initializable {
         setErrorMessage( passwordError, null );
         setErrorMessage( NewPasswordError, null );
         setErrorMessage( dobError, null );
+        setErrorMessage(confrimNewPasswordError,null);
     }
 
     @FXML
