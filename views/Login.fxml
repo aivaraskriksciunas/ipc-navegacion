@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -96,7 +95,7 @@
                   </Label>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="500.0">
                      <children>
-                        <Button fx:id="loginButton" mnemonicParsing="false" onAction="#logUserIn" prefWidth="100.0" styleClass="btnLight" stylesheets="@main.css" text="Login" textFill="#2d8d26">
+                        <Button fx:id="loginButton" mnemonicParsing="false" onAction="#logUserIn" prefWidth="100.0" styleClass="btnLightBT" stylesheets="@main.css" text="Login" textFill="#2d8d26">
                            <font>
                               <Font name="Segoe UI Bold" size="18.0" />
                            </font>
@@ -104,17 +103,10 @@
                               <Insets right="20.0" />
                            </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#closeLogin" prefWidth="100.0" stylesheets="@main.css" text="Cancel" textFill="#c62424">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
+                        <Button mnemonicParsing="false" onAction="#closeLogin" prefWidth="100.0" styleClass="btnDarkBT" stylesheets="@main.css" text="Cancel">
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin>
-                           <styleClass>
-                              <String fx:value="btnDark" />
-                              <String fx:value="textLight" />
-                           </styleClass>
                         </Button>
                      </children>
                   </HBox>

@@ -8,12 +8,11 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="controllers.QuestionListController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.QuestionListController">
    <children>
-      <VBox prefHeight="400.0" prefWidth="600.0">
+      <VBox prefHeight="400.0" prefWidth="600.0" styleClass="primaryBG" stylesheets="@main.css">
          <children>
-            <Label text="Available questions:">
+            <Label styleClass="textLight" text="Available questions:">
                <VBox.margin>
                   <Insets bottom="8.0" />
                </VBox.margin>
@@ -25,7 +24,7 @@
             </VBox>
             <HBox alignment="BOTTOM_RIGHT" prefHeight="30.0" prefWidth="539.0">
                <children>
-                  <Button fx:id="selectQuestion" alignment="CENTER" mnemonicParsing="false" onAction="#onSelectQuestion" prefHeight="26.0" prefWidth="546.0" text="Select question" textAlignment="CENTER" />
+                  <Button fx:id="selectQuestion" alignment="CENTER" mnemonicParsing="false" onAction="#onSelectQuestion" prefHeight="26.0" prefWidth="546.0" styleClass="btnLight" stylesheets="@main.css" text="Select question" textAlignment="CENTER" />
                </children>
                <VBox.margin>
                   <Insets top="8.0" />

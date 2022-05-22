@@ -4,10 +4,9 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="controllers.UserHistoryController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="primaryBG" stylesheets="@main.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.UserHistoryController">
    <children>
-      <TableView fx:id="sessionListView" layoutX="29.0" layoutY="28.0" prefHeight="346.0" prefWidth="539.0">
+      <TableView fx:id="sessionListView" layoutX="29.0" layoutY="28.0" prefHeight="346.0" prefWidth="539.0" stylesheets="@main.css">
         <columns>
           <TableColumn fx:id="dateCol" prefWidth="150.4000244140625" text="Date" />
           <TableColumn fx:id="hitsCol" minWidth="0.0" prefWidth="89.5999755859375" text="Correct" />
