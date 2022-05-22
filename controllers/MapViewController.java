@@ -273,11 +273,6 @@ public class MapViewController implements Initializable {
     }    
     
     @FXML
-    private void onZoom( ScrollEvent event ) {
-        zoom( event.getDeltaY() ); 
-    }
-    
-    @FXML
     private void onZoomOut(ActionEvent event) {
         zoom( -1 );
     }
@@ -324,7 +319,7 @@ public class MapViewController implements Initializable {
             scale -= 0.1;
         }
         
-        scale = Math.max( 0, scale );
+        scale = Math.max( 0.6, scale );
         scale = Math.min( 5, scale );
         
         double scrollH = mapView.getHvalue();
@@ -455,8 +450,12 @@ public class MapViewController implements Initializable {
                 break;
             case MOVING_PROTRACTOR:
                 mapGroup.setOnMouseMoved( e -> {
-                    protractor.setX( e.getX() - protractor.getBoundsInParent().getWidth() / 2 );
-                    protractor.setY( e.getY() - protractor.getBoundsInParent().getHeight() / 2 );
+                    double w = protractor.getBoundsInParent().getWidth() / 2;
+                    double h = protractor.getBoundsInParent().getHeight() / 2;
+                    protractor.setX( e.getX() - w );
+                    protractor.setY( e.getY() - h );
+                    protractor.setX( Math.max( -w, protractor.getX() ));
+                    protractor.setY( Math.max( -h, protractor.getY() ));
                 });
                 break;
             default:
@@ -496,6 +495,7 @@ public class MapViewController implements Initializable {
         }
         else if ( currentAction.get() == MapAction.MOVING_PROTRACTOR ) {
             currentAction.set( MapAction.NONE );
+            moveProtractorBtn.setSelected( false );
         }
         else if ( isEditing() ) {
             setSelectedNode( null );
@@ -609,6 +609,21 @@ public class MapViewController implements Initializable {
         }
         
         mapGroup.getChildren().add( protractor );
+    }
+    
+    @FXML
+    private void onMapClear(ActionEvent event) {
+        ArrayList<Node> toRemove = new ArrayList<>();
+        
+        for ( Node n : mapGroup.getChildren() ) {
+            if ( n.equals( mapImage ) || n.equals( protractor ) ) {
+                continue;
+            }
+            
+            toRemove.add( n );
+        }
+        
+        mapGroup.getChildren().removeAll( toRemove );
     }
     
 }

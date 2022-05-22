@@ -37,6 +37,7 @@ public class NavigationIPC extends Application {
         mainScene = new Scene( mainLoader.load() );
         
         stage.setScene( welcomeScene ); // set to welcome scene later
+        stage.setTitle( "NavEx" );
         stage.show();
         
         this.stage = stage;
