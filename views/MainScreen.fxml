@@ -11,13 +11,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="primaryBG" stylesheets="@main.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainScreenController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="primaryBG" stylesheets="@main.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainScreenController">
    <children>
       <MenuBar>
         <menus>
           <Menu mnemonicParsing="false" text="_Proflie">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#editProfile" text="Edit profile" />
+              <MenuItem mnemonicParsing="false" onAction="#editProfileMenuOption" text="Edit profile" />
                   <MenuItem mnemonicParsing="false" onAction="#logUserOut" text="Logout" />
             </items>
           </Menu>
@@ -39,7 +39,7 @@
                <children>
                   <HBox alignment="CENTER" onMouseClicked="#editProfile" prefHeight="10.0" spacing="10.0" styleClass="userArea" stylesheets="@main.css">
                      <children>
-                        <Label fx:id="userName" onMouseClicked="#editProfile" styleClass="textDark" stylesheets="@main.css" text="userName">
+                        <Label fx:id="userName" styleClass="textDark" stylesheets="@main.css" text="userName">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -47,7 +47,7 @@
                               <Insets left="10.0" />
                            </padding>
                         </Label>
-                        <ImageView fx:id="userAvatar" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#editProfile" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="userAvatar" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
                      <padding>
                         <Insets right="10.0" />
