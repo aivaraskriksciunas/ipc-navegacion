@@ -47,6 +47,8 @@ public class QuestionViewManager {
             
             mapWindow.setTitle( "Map Tools" );
             mapWindow.setScene( scene );
+            mapWindow.setMinHeight( 400 );
+            mapWindow.setMinWidth( 600 );
         }
         catch ( IOException e ) {
             System.out.println( e.toString() );

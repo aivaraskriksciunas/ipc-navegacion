@@ -60,6 +60,7 @@
 
 .textLight {
     -fx-text-fill: #f8f9fa;
+    -fx-fill: #f8f9fa;
 }
 
 .textDark {
