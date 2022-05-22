@@ -16,9 +16,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import utils.QuestionViewManager;
 import state.UserState;
+import utils.NotifUtils;
 
 /**
  * FXML Controller class
@@ -81,6 +83,27 @@ public class MainScreenController implements Initializable {
     @FXML
     private void previewMapBtn(ActionEvent event) {
         questionViewManager.showMap();
+    }
+
+    @FXML
+    private void openSessionHistory(ActionEvent event) {
+        // Load map
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation( getClass().getResource("../views/UserHistory.fxml") );
+        
+        try {
+            Scene scene = new Scene( fxmlLoader.load() );
+            Stage sessionWindow = new Stage();
+            
+            sessionWindow.setTitle( "Session History" );
+            sessionWindow.setScene( scene );
+            sessionWindow.initModality( Modality.APPLICATION_MODAL );
+            sessionWindow.showAndWait();
+        }
+        catch ( IOException e ) {
+            NotifUtils.showError( "Error", "Could not show user history due to missing files or database error." );
+            System.out.println( e );
+        }
     }
     
 }

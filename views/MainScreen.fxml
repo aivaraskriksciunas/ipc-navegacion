@@ -11,7 +11,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="primaryBG" stylesheets="@main.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainScreenController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="mainBG" stylesheets="@mainScreen.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainScreenController">
+
    <children>
       <MenuBar>
         <menus>
@@ -58,9 +59,10 @@
       </HBox>
       <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#rdnPrbBtn" prefWidth="150.0" styleClass="btnLight" stylesheets="@main.css" text="Random Problem" />
-            <Button mnemonicParsing="false" onAction="#allPrbBtn" prefWidth="150.0" styleClass="btnLight" stylesheets="@main.css" text="All Problems" />
-            <Button mnemonicParsing="false" onAction="#previewMapBtn" prefWidth="150.0" styleClass="btnLight" stylesheets="@main.css" text="Preview Map" />
+            <Button mnemonicParsing="false" onAction="#rdnPrbBtn" prefWidth="150.0" styleClass="btnLight" stylesheets="@mainScreen.css" text="Random Problem" />
+            <Button mnemonicParsing="false" onAction="#allPrbBtn" prefWidth="150.0" styleClass="btnLight" stylesheets="@mainScreen.css" text="All Problems" />
+            <Button mnemonicParsing="false" onAction="#previewMapBtn" prefWidth="150.0" styleClass="btnLight" stylesheets="@mainScreen.css" text="Preview Map" />
+            <Button mnemonicParsing="false" onAction="#openSessionHistory" prefWidth="150.0" styleClass="btnLight" stylesheets="@mainScreen.css" text="Sessions" />
          </children></HBox>
    </children>
 </VBox>
