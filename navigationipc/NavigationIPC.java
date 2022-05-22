@@ -46,6 +46,12 @@ public class NavigationIPC extends Application {
         
     }
     
+    @Override
+    public void stop() {
+        // Automaticall logout and save session
+        UserState.getState().logout();
+    }
+    
     private class UserStateListener implements ChangeListener<User> {
 
         @Override

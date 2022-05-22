@@ -26,6 +26,9 @@ public class SessionManager {
     }
     
     public void saveSession() {
+        // Don't save empty sessions
+        if ( hits == 0 && faults == 0 ) return;
+        
         try {
             user.addSession( new Session( LocalDateTime.now(), hits, faults ) );
         }
