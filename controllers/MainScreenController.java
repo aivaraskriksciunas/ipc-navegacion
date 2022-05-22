@@ -87,7 +87,6 @@ public class MainScreenController implements Initializable {
 
     @FXML
     private void openSessionHistory(ActionEvent event) {
-        // Load map
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation( getClass().getResource("../views/UserHistory.fxml") );
         
@@ -102,7 +101,25 @@ public class MainScreenController implements Initializable {
         }
         catch ( IOException e ) {
             NotifUtils.showError( "Error", "Could not show user history due to missing files or database error." );
-            System.out.println( e );
+        }
+    }
+
+    @FXML
+    private void onEditProfile(MouseEvent event) {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation( getClass().getResource("../views/EditProfile.fxml") );
+        
+        try {
+            Scene scene = new Scene( fxmlLoader.load() );
+            Stage sessionWindow = new Stage();
+            
+            sessionWindow.setTitle( "Edit user profile" );
+            sessionWindow.setScene( scene );
+            sessionWindow.initModality( Modality.APPLICATION_MODAL );
+            sessionWindow.showAndWait();
+        }
+        catch ( IOException e ) {
+            NotifUtils.showError( "Error", "Unable to edit profile due to missing files or database error." );
         }
     }
     
